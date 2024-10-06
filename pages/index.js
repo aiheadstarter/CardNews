@@ -226,7 +226,7 @@ export default function Home() {
       </Navigation>
       <HeroSection>
         <HeroTitle>한국광고연구소 카드 뉴스</HeroTitle> {/* 타이틀 수정 */}
-        <HeroSubtitle>생성형AI를 활용하여 누구보다 빠르게 대한민국 중소기업 마케팅 정보를 제공합니다!</HeroSubtitle> {/* 서브타이틀 수정 */}
+        <HeroSubtitle>생성형AI를 활용하여 누구보다 빠르게 중소기업 광고/홍보/마케팅 정보를 제공합니다!</HeroSubtitle> {/* 서브타이틀 수정 */}
         <Button>View Latest Posts</Button>
       </HeroSection>
       <CategorySection>
