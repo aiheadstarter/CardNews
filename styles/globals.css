@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+.hero-section {
+    background-image: url('https://dimg.donga.com/wps/NEWS/IMAGE/2023/09/27/121408559.1.jpg');
+    background-size: cover; /* 배경 이미지가 섹션을 가득 채우도록 설정 */
+    background-position: center; /* 배경 이미지의 위치를 중앙으로 설정 */
+    height: 100vh; /* 섹션의 높이를 전체 화면 높이로 설정 */
+    /* ... 기존 스타일 ... */
+}

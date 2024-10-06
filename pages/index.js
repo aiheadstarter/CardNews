@@ -1,115 +1,277 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+import styled from 'styled-components';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #f4f4f4;
+`;
+
+const Navigation = styled.nav`
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  text-align: center;
+`;
+
+const NavLink = styled.a`
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+`;
+
+const HeroSection = styled.section`
+  background-image: url('https://www.imf.org/-/media/Images/IMF/FANDD/hero/2023/December/hero-Gopinath-AS2.ashx');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  height: 30vh;
+  width: 100%;
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 2.5em;
+  margin: 0;
+`;
+
+const HeroSubtitle = styled.p`
+  font-size: 1.2em;
+  margin: 10px 0;
+`;
+
+const Button = styled.button`
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #e55b50;
+  }
+`;
+
+const CategorySection = styled.section`
+  text-align: center;
+  margin: 20px 0;
+`;
+
+const CategoryLink = styled.a`
+  margin: 0 10px;
+  font-weight: bold;
+  color: #333;
+`;
+
+const MainSection = styled.section`
+  margin: 40px 0;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const Card = styled.div`
+  background: white;
+  border-radius: 8px;
+  width: 300px;
+  margin: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`;
+
+const CardContent = styled.div`
+  padding: 15px;
+`;
+
+const Tag = styled.span`
+  background: #ff6f61;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  margin-right: 10px;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.5em;
+  margin: 10px 0;
+`;
+
+const CardText = styled.p`
+  font-size: 0.9em;
+  color: #666;
+`;
+
+const CardFooter = styled.div`
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 10px;
+`;
+
+const Footer = styled.footer`
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+`;
+
+const cardData = [
+  {
+    title: 'The Road Ahead',
+    content: 'The road ahead might be paved - it might not be.',
+    author: 'Mat Vogels',
+    date: 'September 25, 2015',
+    category: 'Photography',
+    image: 'https://source.unsplash.com/random/300x200?photography',
+  },
+  {
+    title: 'From Top Down',
+    content: 'Once a year, go someplace you’ve never been before.',
+    author: 'William Wong',
+    date: 'September 25, 2015',
+    category: 'Adventure',
+    image: 'https://source.unsplash.com/random/300x200?adventure',
+  },
+  // 추가 카드 데이터...
+];
+
+const recentCardData = [
+  {
+    title: 'Still Standing Tall',
+    content: 'Life begins at the end of your comfort zone.',
+    author: 'William Wong',
+    date: '9/25/2015',
+    category: 'Nature',
+    image: 'https://source.unsplash.com/random/300x200?nature',
+  },
+  {
+    title: 'Sunny Side Up',
+    content: 'No place is ever as bad as they tell you it’s going to be.',
+    author: 'Mat Vogels',
+    date: '9/25/2015',
+    category: 'Photography',
+    image: 'https://source.unsplash.com/random/300x200?photography',
+  },
+  {
+    title: 'Water Falls',
+    content: 'We travel not to escape life, but for life not to escape us.',
+    author: 'Mat Vogels',
+    date: '9/25/2015',
+    category: 'Relaxation',
+    image: 'https://source.unsplash.com/random/300x200?relaxation',
+  },
+  {
+    title: 'Through the Mist',
+    content: 'Travel makes you see what a tiny place you occupy in the world.',
+    author: 'William Wong',
+    date: '9/25/2015',
+    category: 'Vacation',
+    image: 'https://source.unsplash.com/random/300x200?vacation',
+  },
+  {
+    title: 'Awaken Early',
+    content: 'Not all those who wander are lost.',
+    author: 'Mat Vogels',
+    date: '9/25/2015',
+    category: 'Vacation',
+    image: 'https://source.unsplash.com/random/300x200?vacation',
+  },
+  {
+    title: 'Try it Always',
+    content: 'The world is a book, and those who do not travel read only one page.',
+    author: 'Mat Vogels',
+    date: '9/25/2015',
+    category: 'Travel',
+    image: 'https://source.unsplash.com/random/300x200?travel',
+  },
+];
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <Container>
+      <Navigation>
+        <NavLink href="#">Home</NavLink>
+        <NavLink href="#">Nature</NavLink>
+        <NavLink href="#">Photography</NavLink>
+        <NavLink href="#">Relaxation</NavLink>
+        <NavLink href="#">Vacation</NavLink>
+        <NavLink href="#">Travel</NavLink>
+        <NavLink href="#">Adventure</NavLink>
+      </Navigation>
+      <HeroSection>
+        <HeroTitle>한국광고연구소 카드 뉴스</HeroTitle> {/* 타이틀 수정 */}
+        <HeroSubtitle>생성형AI를 활용하여 누구보다 빠르게 대한민국 중소기업 마케팅 정보를 제공합니다!</HeroSubtitle> {/* 서브타이틀 수정 */}
+        <Button>View Latest Posts</Button>
+      </HeroSection>
+      <CategorySection>
+        <CategoryLink href="#">Nature</CategoryLink>
+        <CategoryLink href="#">Photography</CategoryLink>
+        <CategoryLink href="#">Relaxation</CategoryLink>
+        <CategoryLink href="#">Vacation</CategoryLink>
+        <CategoryLink href="#">Travel</CategoryLink>
+        <CategoryLink href="#">Adventure</CategoryLink>
+      </CategorySection>
+      <MainSection>
+        <SectionTitle>Featured Posts</SectionTitle>
+        <CardContainer>
+          {cardData.map((card, index) => (
+            <Card key={index}>
+              <CardImage src={card.image} alt={card.title} />
+              <CardContent>
+                <Tag>{card.category}</Tag>
+                <CardTitle>{card.title}</CardTitle>
+                <CardText>{card.content}</CardText>
+                <CardFooter>{card.author} - {card.date}</CardFooter>
+              </CardContent>
+            </Card>
+          ))}
+        </CardContainer>
+      </MainSection>
+      <MainSection>
+        <SectionTitle>Most Recent</SectionTitle>
+        <CardContainer>
+          {recentCardData.map((card, index) => (
+            <Card key={index}>
+              <CardImage src={card.image} alt={card.title} />
+              <CardContent>
+                <Tag>{card.category}</Tag>
+                <CardTitle>{card.title}</CardTitle>
+                <CardText>{card.content}</CardText>
+                <CardFooter>{card.author} - {card.date}</CardFooter>
+              </CardContent>
+            </Card>
+          ))}
+        </CardContainer>
+      </MainSection>
+      <Footer>
+        &copy; 2023 Card News. All rights reserved.
+      </Footer>
+    </Container>
   );
 }
